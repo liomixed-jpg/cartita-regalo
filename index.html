@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Carta de regalo</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(#fbeaff, #ffc1cc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Globos */
+.balloons span {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    animation: subir 6s linear infinite;
+}
+
+.balloons span:nth-child(1){ left:10%; background: red;}
+.balloons span:nth-child(2){ left:30%; background: blue; animation-duration: 8s;}
+.balloons span:nth-child(3){ left:50%; background: yellow; animation-duration: 7s;}
+.balloons span:nth-child(4){ left:70%; background: green; animation-duration: 9s;}
+.balloons span:nth-child(5){ left:90%; background: purple; animation-duration: 6s;}
+
+@keyframes subir {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); }
+}
+
+/* Pastel */
+.pastel {
+    width: 220px;
+    height: 160px;
+    background: #ffb6c1;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.pastel:hover {
+    transform: scale(1.1);
+}
+
+/* Carta */
+.carta {
+    display: none;
+    position: absolute;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 0 20px black;
+    animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.5);}
+    to { opacity: 1; transform: scale(1);}
+}
+
+/* Imagen corazón con animación */
+.img-corazon {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: 15px auto;
+    display: block;
+
+    clip-path: path("M100 180 L20 100 A40 40 0 0 1 100 40 A40 40 0 0 1 180 100 Z");
+
+    opacity: 0;
+    transform: scale(0.5);
+    animation: aparecerImg 1s ease forwards, latido 1.5s infinite;
+}
+
+@keyframes aparecerImg {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="musica" src="musica1.mp3"></audio>
+
+<div class="balloons">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="pastel" onclick="abrirCarta()">
+    🎂 Toca el pastel
+</div>
+
+<div class="carta" id="carta">
+    <h1>🎁 Para ti</h1>
+
+    <img class="img-corazon" src="IMG-20260214-WA0023.JPG">
+    
+    <p>una pequeña carta diseñada para ti con mucho afecto de mi parte.</p>
+    <p>
+    En este día tan especial, quiero recordarte lo increíble que eres y lo mucho que significas para mí. 
+    Eres la luz que ilumina mis días y la alegría que llena mi corazón. 
+    Que este nuevo año de vida te traiga aún más felicidad, amor y éxito en todo lo que emprendas. 
+    Siempre estaré aquí para apoyarte y celebrar cada uno de tus logros. 
+    ¡Feliz cumpleaños, mi niña bonita!
+    Gracias por ser parte de mi vida 💖
+    </p>
+</div>
+
+<script>
+function abrirCarta(){
+    document.getElementById("carta").style.display = "block";
+    document.getElementById("musica").play();
+}
+</script>
+
+</body>
+</html>
